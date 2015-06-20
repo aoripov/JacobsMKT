@@ -1,4 +1,23 @@
 <!DOCTYPE html>
-	<%= @user.name %>, <%= @user.email %>
-
+  <h1 class="text-center">User information</h1>
+  <div id="datatable" class="container">
+    <table class="table table-bordered">  
+        <thead>  
+          <tr>  
+            <th>Option</th>  
+            <th>Value</th>  
+          </tr>  
+        </thead>  
+        <tbody>  
+          <tr>  
+            <td>Name</td>  
+            <td><%= @user.name %></td>  
+          </tr>  
+          <tr>  
+            <td>Email</td>  
+            <td><%= @user.email %></td>  
+          </tr>  
+        </tbody>  
+    </table>
+  </div>  
 </html>
