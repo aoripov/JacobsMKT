@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'signup'  => 'users#new'
   resources :users
+  get '/items' => 'items#index'
+  get '/items/new' => 'items#new'
+  post '/items' => 'items#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
