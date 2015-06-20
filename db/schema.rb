@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20150620171717) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
+    t.string   "image"
+    t.float    "price"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
