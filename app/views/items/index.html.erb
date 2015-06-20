@@ -1,0 +1,10 @@
+<div>
+  <div>
+    <% @items.each do |item| %>
+    <div>=
+      <p><%= item.name %></p>
+      <p><%= item.created_at %></p>
+    </div>
+    <% end %>
+    <%= link_to 'Add Item', "items/new" %>
+</div>
