@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+  <% if logged_in? %>
   <h1 class="text-center">User information</h1>
   <div id="datatable" class="container">
     <table class="table table-bordered">  
@@ -19,5 +20,8 @@
           </tr>  
         </tbody>  
     </table>
-  </div>  
+  </div>
+  <% else %>
+    You're not logged in.
+  <% end %>
 </html>
