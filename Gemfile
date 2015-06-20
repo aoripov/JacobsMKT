@@ -41,5 +41,13 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #encryption helper
+  gem 'bcrypt', '3.1.7'
+end
+
+group :production do
+  #changes webserver on heroku 
+  gem 'puma',           '2.11.1'
 end
 
