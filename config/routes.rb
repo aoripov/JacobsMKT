@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/items' => 'items#index'
   get '/items/new' => 'items#new'
   post '/items' => 'items#create'
+  get '/user/items' => 'items#user_items'
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
