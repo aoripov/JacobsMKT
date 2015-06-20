@@ -7,8 +7,13 @@ class ItemsController < ApplicationController
 		@item = Item.new
 	end 
 
+	def user_items 
+		@items = Item.where(user_id: current_user)
+	end
+
 	def create
 		@item = Item.new(item_params)
+		@item.user_id = current_user.id
 		if @item.save
 			redirect_to '/items'
 		else
@@ -18,6 +23,6 @@ class ItemsController < ApplicationController
 
 	private
 		def item_params
-			params.require(:item).permit(:name, :price)
+			params.require(:item).permit(:name, :price, :description, :id)
 		end
 end
