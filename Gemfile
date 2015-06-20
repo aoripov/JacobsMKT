@@ -40,6 +40,18 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+<<<<<<< HEAD
   #gem 'spring'
+=======
+  gem 'spring'
+
+  #encryption helper
+  gem 'bcrypt', '3.1.7'
+end
+
+group :production do
+  #changes webserver on heroku 
+  gem 'puma',           '2.11.1'
+>>>>>>> 07cad7c0824f59ca9f53749541778045d5a839ae
 end
 
