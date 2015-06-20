@@ -11,11 +11,15 @@ class ItemsController < ApplicationController
 		@items = Item.where(user_id: current_user)
 	end
 
+	def show
+		@item = Item.find(params[:id])
+	end
+
 	def create
 		@item = Item.new(item_params)
 		@item.user_id = current_user.id
 		if @item.save
-			redirect_to '/items'
+			redirect_to '/user/items'
 		else
 			render 'new'
 		end
