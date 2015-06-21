@@ -1,11 +1,19 @@
+<div class="col-xs-9 col-md-9">
+	<div class="thumbnail"
 <%= form_for(@item) do |f| %>  
   <div class="field"> 
-    <%= f.label :item %><br> 
-    <%= f.text_area :name %>
-    <%= f.number_field :price, :class => 'text_field', :step => 'any'%>
-    <%= f.text_area :description %>
-  </div> 
+    <label>Name</label> 
+    <%= f.text_area :name , class: "form-control"%>
+    <label>Price</label>
+    <div class="input-group">
+    	<div class="input-group-addon">&#8364</div>
+    	<%= f.number_field :price, :class => 'form-control', :step => 'any'%>
+   	</div>
+    <label>Description</label>
+    <%= f.text_area :description, class: "form-control" %>
   <div class="actions"> 
     <%= f.submit "Post" %> 
   </div> 
+  </div>
 <% end %>
+	</div>
