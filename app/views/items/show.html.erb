@@ -1,10 +1,23 @@
-<div>
-	<h3><%= @item.name%></h3>
-	<div>
-	<%= @item.description %>
-	<%= @item.price %>
-	</div>
-	<button />
-<% $price = @item.price %>
-<%=link_to "Checkout", new_transaction_path, class: "button"%>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<div class="container">
+  <div>
+    <div class="col-xs-9 col-md-9">
+      <div class="thumbnail">  
+        <div class="caption">
+          <h4><%= @item.name %></h4>
+          <p><strong>Price: <%= @item.price %> &#8364</strong></p>
+          <p><%= @item.description %></p>
+          <p>
+            <% if current_user %>
+              <% if @item.user_id === current_user.id %>  
+            <a href="/items/<%= @item.id %>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>
+              <% end %>
+            <% end %>
+            <%=link_to "Checkout", new_transaction_path, class: "btn btn-primary btn-sm"%>
+          </p>
+          <% $price = @item.price %>
+         </div>
+      </div>
+    </div>
+  </div>
 </div>
