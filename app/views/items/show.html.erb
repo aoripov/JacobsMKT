@@ -4,5 +4,7 @@
 	<%= @item.description %>
 	<%= @item.price %>
 	</div>
-
+	<button />
+<% $price = @item.price %>
+<%=link_to "Checkout", new_transaction_path, class: "button"%>
 </div>
