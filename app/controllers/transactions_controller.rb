@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
     if @result.success?
       redirect_to items_path, notice: "Congratulations! Your transaction has been successful!"
     else
-      #flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
+      flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
       gon.client_token = generate_client_token
       render :new
     end
