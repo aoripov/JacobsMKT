@@ -12,8 +12,8 @@ development:
   reconnect: false
   database: db/development
   pool: 5
-  username: root
-  password: test1234
+  username: xtzlmqztdjcrdx
+  password: xywUNaxr1akULHNcnck0gf9Cun
   #socket: /opt/local/var/run/mysql5/mysqld.sock
 test:
   adapter: mysql
@@ -21,8 +21,8 @@ test:
   reconnect: false
   database: db/test
   pool: 5
-  username: root
-  password: test1234
+  username: xtzlmqztdjcrdx
+  password: xywUNaxr1akULHNcnck0gf9Cun
   #socket: **/opt/local/var/run/mysql5/mysqld.sock**
 
 production:
@@ -31,6 +31,6 @@ production:
   reconnect: false
   database: db/production
   pool: 5
-  username: root
-  password: test1234
+  username: xtzlmqztdjcrdx
+  password: xywUNaxr1akULHNcnck0gf9Cun
   #socket: **/opt/local/var/run/mysql5/mysqld.sock**
