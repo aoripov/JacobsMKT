@@ -1,11 +1,28 @@
-<div>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<div class="container">
   <div>
     <% @items.each do |item| %>
-    <div>=
-      <p><%= item.name %></p>
-      <p><%= item.price %></p>
-      <p><%= item.created_at %></p>
+    <div class="col-xs-3 col-md-3">
+      <div class="thumbnail">  
+        <div class="caption">
+          <h4><%= item.name %></h4>
+          <p><strong>Price: <%= item.price %> &#8364</strong></p>
+          <% if item.description.length > 100 %>
+          <p><%= item.description[0,100] %>...</p>
+          <% else %>
+          <p><%= item.description %></p>
+          <% end %>
+          <p>
+            <a href="/items/<%= item.id %>" class="btn btn-primary btn-sm" role="button">See more</a>
+            <% if current_user %>
+              <% if item.user_id === current_user.id %>  
+            <a href="/items/<%= item.id %>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>
+              <% end %>
+            <% end %>
+          </p>
+         </div>
+      </div>
     </div>
     <% end %>
-    <%= link_to 'Add Item', "/items/new" %>
+  </div>
 </div>
