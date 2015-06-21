@@ -13,7 +13,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
+gem 'mysql'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
