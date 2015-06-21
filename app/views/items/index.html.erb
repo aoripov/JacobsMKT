@@ -19,11 +19,14 @@
               <% if item.user_id === current_user.id %>  
             <a href="/items/<%= item.id %>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>
               <% end %>
+              <a href="/items/<%= item.id %>/edit" class="btn btn-primary btn-sm" role="button">Like</a>
+            
             <% end %>
           </p>
          </div>
       </div>
     </div>
     <% end %>
+    <a href="/items/new" class="btn btn-primary btn-sm" role="button">Add Product</a>
   </div>
 </div>
