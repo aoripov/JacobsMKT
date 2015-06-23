@@ -2,17 +2,12 @@
 <div class="container">
   <div>
     <% @items.each do |item| %>
-    <div class="col-xs-3 col-md-3">
+    <div class="col-xs-12 col-sm-6 col-md-3 entry-card-wrapper ng-scope">
       <div class="thumbnail">  
       <img src="/random.jpeg">
         <div class="caption">
           <h4><%= item.name %></h4>
           <p><strong>Price: <%= item.price %> &#8364</strong></p>
-          <% if item.description.length > 100 %>
-          <p><%= item.description[0,100] %>...</p>
-          <% else %>
-          <p><%= item.description %></p>
-          <% end %>
           <p>
             <a href="/items/<%= item.id %>" class="btn btn-primary btn-sm" role="button">See more</a>
             <% if current_user %>
