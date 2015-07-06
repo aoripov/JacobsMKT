@@ -12,7 +12,7 @@
     <label>Description</label>
     <%= f.text_area :description, class: "form-control" %>
     <label>Picture</label>
-    <input type="file">
+    <%= f.file_field :image %>
     <%= f.submit "Post" %> 
   </div>
 <% end %>

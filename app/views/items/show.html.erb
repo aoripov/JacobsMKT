@@ -3,7 +3,11 @@
   <div>
     <div class="col-xs-9 col-md-9">
       <div class="thumbnail">
-      	<img src="/random.jpeg">  
+      	<!-- <img src="/random.jpeg">   -->
+        <% unless @item.image.nil? %>
+          <%= image_tag @item.image %>
+          <br />
+        <% end %>
         <div class="caption">
           <h4><%= @item.name %></h4>
           <p><strong>Price: <%= @item.price %> &#8364</strong></p>
