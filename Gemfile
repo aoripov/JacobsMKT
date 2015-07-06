@@ -45,6 +45,7 @@ gem 'gon'
 
 #image uploading
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'cloudinary'
 
 group :development, :test do
