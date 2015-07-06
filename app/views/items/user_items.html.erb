@@ -4,7 +4,10 @@
     <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-6 col-md-3 entry-card-wrapper ng-scope">
       <div class="thumbnail">  
-      <img src="/random.jpeg">
+      <% unless item.image.nil? %>
+        <%= image_tag item.image %>
+        <br />
+      <% end %>
         <div class="caption">
           <h4><%= item.name %></h4>
           <p><strong>Price: <%= item.price %> &#8364</strong></p>
