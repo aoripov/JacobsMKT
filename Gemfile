@@ -5,11 +5,12 @@ ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+group :assets do
+  gem 'sass-rails',   '~> 5.0'
+  gem 'coffee-rails', '~> 4.1.0'
+  gem 'uglifier', '~> 1.3.0'
+end
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -48,6 +49,8 @@ gem 'gon'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cloudinary'
+
+gem 'twitter-bootstrap-rails'
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
