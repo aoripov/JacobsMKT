@@ -14,13 +14,17 @@
 ActiveRecord::Schema.define(version: 20150706164137) do
 
   create_table "items", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "image",       limit: 255
-    t.text     "description", limit: 65535
-    t.float    "price",       limit: 24
-    t.integer  "user_id",     limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "name",               limit: 255
+    t.string   "image",              limit: 255
+    t.text     "description",        limit: 65535
+    t.float    "price",              limit: 24
+    t.integer  "user_id",            limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
   end
 
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree

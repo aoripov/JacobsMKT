@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   post '/items' => 'items#create'
   get '/user/items' => 'items#user_items'
   get '/items/:id' => 'items#show'
+  get '/items/:id/edit' => 'items#edit', :as => :item
+  patch '/items/:id/edit' => 'items#update'
+  get '/items/:id/delete' => 'items#delete'
   resources :users
   resources :transactions, only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
