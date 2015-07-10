@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="col-xs-9 col-md-9">
+  	<div class="thumbnail">
+  	<%= form_for(@item) do |f| %>  
+    	<div class="field"> 
+      <label>Name</label> 
+      <%= f.text_area :name , class: "form-control"%>
+      <label>Price</label>
+      <div class="input-group">
+      	<div class="input-group-addon">&#8364</div>
+      	<%= f.number_field :price, :class => 'form-control', :step => 'any'%>
+     	</div>
+      <label>Description</label>
+      <%= f.text_area :description, class: "form-control" %>
+      <label>Picture</label>
+      <% unless @item.image.nil? %>
+      <div class="thumbnail">
+        <%= image_tag @item.image_url(:thumb) %>
+      </div>
+        <br />
+      <% end %>
+      <%= f.file_field :image %>
+      <br/>
+      <%= f.submit "Update", :class => 'btn btn-primary btn-sm' %> 
+      <a href="/items/<%= @item.id %>/delete" class="btn btn-danger btn-sm" role="button">Delete</a>
+    </div>
+  <% end %>
+  	</div>
+  </div>
+</div>
