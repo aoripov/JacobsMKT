@@ -13,12 +13,14 @@
       <label>Description</label>
       <%= f.text_area :description, class: "form-control" %>
       <label>Picture</label>
-      <% unless @item.image.nil? %>
+
+      <% unless @item.image_url(:thumb).nil? %>
       <div class="thumbnail">
-        <%= image_tag @item.image_url(:thumb) %>
-      </div>
-        <br />
-      <% end %>
+        <%= image_tag @item.image_url(:thumb), :class => "img-thumbnail"%>
+      </div>  
+      <br/>
+      <% end %> 
+
       <%= f.file_field :image %>
       <br/>
       <%= f.submit "Update", :class => 'btn btn-primary btn-sm' %> 
