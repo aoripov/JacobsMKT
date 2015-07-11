@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get '/logout' => 'sessions#logout'
+  get '/users/:id', to: 'users#show', as:'user'
   get '/items' => 'items#index'
   get '/items/new' => 'items#new'
   post '/items' => 'items#create'

@@ -38,7 +38,20 @@
           <div class="navbar-collapse collapse">
             <nav role="navigation">
               <ul class="menu nav navbar-nav">
-                <li class="first leaf active"><a href="/" class="active">Home</a></li>
+                <li><a href="/" class="active">Home</a></li>
+                <%if logged_in? %>
+                <li> <%= link_to 'My Account', user_path(@current_user) %></li>
+                <% end %>
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-hashpopup="true"
+                  aria-expanded="false">Categories<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/">Marketplace</a></li>
+                    <li><a href="#">Experiments</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">The Other Side</a></li>
+                  </ul>
+                </li>
               </ul>
               <% if logged_in? %>
               <div>
