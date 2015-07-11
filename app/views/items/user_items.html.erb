@@ -4,10 +4,11 @@
     <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-6 col-md-3 entry-card-wrapper ng-scope">
       <div class="thumbnail">  
-      <% unless item.image.nil? %>
-        <%= image_tag item.image_url(:thumb) %>
-        <br />
-      <% end %>
+      <% unless item.image_url.nil? %>
+        <%= image_tag item.image_url, :class => "img-thumbnail"%>
+      <% else %>
+        <%= image_tag '/default-thumbnail.png' , :class => "img-thumbnail"%>
+      <% end %> 
         <div class="caption">
           <h4><%= item.name %></h4>
           <p><strong>Price: <%= item.price %> &#8364</strong></p>
