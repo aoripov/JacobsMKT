@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    unless logged_in? && eligible_for_viewing?(@user)
+      redirect_to '/422.html'
+    end
   end
 
   def new
@@ -13,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to JacobsMKT!"
       redirect_to @user
     else
       render 'new'
