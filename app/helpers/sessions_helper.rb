@@ -29,6 +29,10 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+
+  def eligible_for_viewing?(user)
+    current_user.id == user.id
+  end
   
   # Forgets a persistent session.
   def forget(user)
