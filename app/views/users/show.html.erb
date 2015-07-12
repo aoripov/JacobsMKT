@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-  <% if logged_in? && eligible_for_viewing?(@user) %>
   <h1 class="text-center">User information</h1>
   <div id="datatable" class="container">
     <table class="table table-bordered">  
@@ -23,7 +22,4 @@
     <a href="/user/items" class="btn btn-primary btn-sm" role="button">My Items</a>
     <a href="/items/new" class="btn btn-primary btn-sm" role="button">Add Product</a>
   </div>
-  <% else %>
-    You don't have the necessary authorization to view this web page.
-  <% end %>
 </html>
