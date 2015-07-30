@@ -1,0 +1,152 @@
+Last login: Wed Jul 29 20:23:14 on ttys002
+Felixs-MacBook-Pro:~ Eggi$ cd Development/
+Felixs-MacBook-Pro:Development Eggi$ cd tetris/
+Felixs-MacBook-Pro:tetris Eggi$ emacs tetris.c 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#ifndef BOARD_H                                                                                                                       |   sigaddset(&set, SIGALRM);
+#define BOARD_H                                                                                                                       |
+                                                                                                                                      |   /* Trap SIGALRM. */
+#include "tetris.h"                                                                                                                   |   sigemptyset(&action.sa_mask);
+                                                                                                                                      |   sigaddset(&action.sa_mask, SIGALRM);
+class Board {                                                                                                                         |   action.sa_flags = 0;
+                                                                                                                                      |   action.sa_handler = alarm_handler;
+ private:                                                                                                                             |   sigaction(SIGALRM, &action, NULL);
+  int board[B_SIZE];                                                                                                                  |
+  int shadow[B_SIZE];                                                                                                                 |   /* Call it once to start the timer. */
+                                                                                                                                      |   alarm_handler (0);
+  void draw_preview();                                                                                                                |
+  void draw_field();                                                                                                                  |   clrscr ();
+  void draw_score();                                                                                                                  |   show_online_help ();
+                                                                                                                                      |
+ public:                                                                                                                              |   shape = next_shape ();
+  int update();                                                                                                                       |   while (1)
+  int* getBoard();                                                                                                                    |   {
+  int* getShadow();                                                                                                                   |      if (c < 0)
+                                                                                                                                      |      {
+                                                                                                                                      |         if (fits_in (shape, pos + B_COLS))
+};                                                                                                                                    |         {
+                                                                                                                                      |            pos += B_COLS;
+#endif                                                                                                                                |         }
+                                                                                                                                      |         else
+                                                                                                                                      |         {
+                                                                                                                                      |            place (shape, pos, 7);
+                                                                                                                                      |            ++points;
+                                                                                                                                      |            for (j = 0; j < 252; j = B_COLS * (j / B_COLS + 1))
+                                                                                                                                      |            {
+                                                                                                                                      |               for (; board[++j];)
+                                                                                                                                      |               {
+                                                                                                                                      |                	 if (j % B_COLS == 10)
+                                                                                                                                      |                  {
+                                                                                                                                      |                     lines_cleared++;
+                                                                                                                                      |
+-uuu:**-F3  Board.h        All L19    (C/l Abbrev)------------------------------------------------------------------------------------|                     for (; j % B_COLS; board[j--] = 0);
+      lines_cleared -= 10;                                                                                                            |                     c = b.update ();
+      level++;                                                                                                                        |                     for (; --j; board[j + B_COLS] = board[j]);
+   }                                                                                                                                  |                     c = b.update ();
+                                                                                                                                      |                  }
+#ifdef ENABLE_SCORE                                                                                                                   |               }
+   draw_score();                                                                                                                      |            }
+#endif                                                                                                                                |            shape = next_shape ();
+#ifdef ENABLE_PREVIEW                                                                                                                 |            if (!fits_in (shape, pos = 17))
+   gotoxy (26 + 28, 5);                                                                                                               |               c = keys[KEY_QUIT];
+   printf ("Preview:");                                                                                                               |         }
+#endif                                                                                                                                |      }
+   gotoxy (26 + 28, 10);                                                                                                              |      if (c == keys[KEY_LEFT])
+   printf ("Keys:");                                                                                                                  |      {
+                                                                                                                                      |         if (!fits_in (shape, --pos))
+   return getchar ();                                                                                                                 |            ++pos;
+}                                                                                                                                     |      }
+                                                                                                                                      |      if (c == keys[KEY_ROTATE])
+                                                                                                                                      |      {
+int* Board::getBoard() {                                                                                                              |         backup = shape;
+                                                                                                                                      |         shape = &shapes[4 * *shape]; /* Rotate */
+  return board;                                                                                                                       |         /* Check if it fits, if not restore shape from backup */
+                                                                                                                                      |         if (!fits_in (shape, pos))
+}                                                                                                                                     |            shape = backup;
+                                                                                                                                      |      }
+int* Board::getShadow() {                                                                                                             |
+                                                                                                                                      |      if (c == keys[KEY_RIGHT])
+  return shadow();                                                                                                                    |      {
+                                                                                                                                      |       	if (!fits_in (shape, ++pos))
+}                                                                                                                                     |            --pos;
+                                                                                                                                      |      }
+                                                                                                                                      |      if (c == keys[KEY_DROP])
+                                                                                                                                      |      {
+                                                                                                                                      |         for (; fits_in (shape, pos + B_COLS); ++points)
+                                                                                                                                      |         {
+                                                                                                                                      |            pos += B_COLS;
+                                                                                                                                      |         }
+                                                                                                                                      |      }
+-uuu:**-F3  Board.cpp      Bot L103   (C++/l Abbrev)----------------------------------------------------------------------------------|-uu-:**-F3  tetris.cpp     69% L284   (C++/l Abbrev)-----------------------------------------------------------------------------------
+
