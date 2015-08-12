@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to JacobsMKT!"
-      redirect_to @user
+      render :js => "window.location = '#{@user}'" #due to the ajax call
     else
       flash[:warning] = "Ups! Looks like you are already registered. Try the normal login link."
       redirect_to login_path #why is this not working? => refers to /user/new
