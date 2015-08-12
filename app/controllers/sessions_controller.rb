@@ -23,7 +23,9 @@ class SessionsController < ApplicationController
       puts 'user found'
       log_in(user, params[:token])
       #params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      #redirect_to( user_path(session[:user_id]), format: :html, remote: true)
+      render :js => "window.location = '#{user_path(session[:user_id])}'" #due to the ajax call
+      #render "/user/show/"+user[:user_id]
 
     else
 

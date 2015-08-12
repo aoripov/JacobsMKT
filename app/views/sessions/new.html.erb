@@ -10,7 +10,7 @@
   <%= link_to "Log in", openjub_path, :class => "button", :method => :get, :target => "_blank" %>
 
   <script>
-
+    var once = false;
   //get the callback from openJUB
     window.addEventListener("message", receiveMessage, false);
 
@@ -26,11 +26,12 @@
     }
 
     function receiveMessage(event) {
-
-      console.log(event);
-      post(event.data);
-      console.log("posted");
-  
+      if(!once) {
+        once = true;
+        console.log(event);
+        post(event.data);
+        console.log("posted");
+      }
     }
 
   </script>
