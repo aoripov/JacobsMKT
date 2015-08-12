@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'transactions/new'
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
+  get   'openjub'  => redirect("https://api.jacobs-cs.club/view/login")
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get '/logout' => 'sessions#logout'

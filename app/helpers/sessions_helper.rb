@@ -1,8 +1,9 @@
 module SessionsHelper
 
   # Logs in the given user.
-  def log_in(user)
+  def log_in(user, token)
     session[:user_id] = user.id
+    session[:jub_token] = token
   end
   
   # Remembers a user in a persistent session.
@@ -45,6 +46,12 @@ module SessionsHelper
   def log_out
     forget(current_user)
     session.delete(:user_id)
+
+    #logout at OpenJUB
+    response = open("https://api.jacobs-cs.club/user/me"+"?token="+session[:jub_token]) #make error check!
+    puts response
+    session.delete(:jub_token)
+
     @current_user = nil
   end
 end

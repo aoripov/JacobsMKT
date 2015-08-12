@@ -13,6 +13,11 @@
  *= require_self
  *= require_tree .
  */
+body {
+
+  overflow: hidden;
+
+}
 
 .ribbon {
 

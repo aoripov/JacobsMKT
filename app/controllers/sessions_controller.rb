@@ -1,18 +1,36 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
 
   def new
+    puts "inside new SessionsController"
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+
+    puts "inside create SessionsController"
+
+    require 'open-uri'
+    require 'json'
+
+    #request the email with help of the received token from OpenJUB-API
+    user_info = open("https://api.jacobs-cs.club/user/me"+"?token="+params[:token])
+    json = JSON.parse(user_info.read)
+    email = json["email"]
+
+    user = User.find_by(email: email)
+    
+    if user
+      puts 'user found'
+      log_in(user, params[:token])
+      #params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user
+
     else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
+
+      flash[:warning] = "Ups! An unexpected error occured. Please try again in a few minutes."
+
     end
+
   end
 
 
