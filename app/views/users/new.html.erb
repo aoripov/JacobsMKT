@@ -3,22 +3,34 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+    
+  <%= link_to "Sign up", openjub_path, :class => "button", :method => :get, :target => "_blank" %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+  <script>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+  //get the callback from openJUB
+    window.addEventListener("message", receiveMessage, false);
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+    function post(data) {
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      $.ajax({
+        url: "/users",
+        type: "POST",
+        data: JSON.parse(data),
+        success: function(){console.log("submitted")}
+      });
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
+    }
+
+    function receiveMessage(event) {
+
+      console.log(event);
+      post(event.data);
+      console.log("posted");
+  
+    }
+
+  </script>
+
   </div>
 </div>

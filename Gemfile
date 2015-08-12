@@ -38,7 +38,7 @@ gem 'capistrano-rails', group: :development
    #encryption helper
 gem 'bcrypt', '3.1.7'
 
-gem 'braintree'
+gem 'braintree'  #delete and remove logic
 
 gem 'figaro'
 
@@ -46,10 +46,13 @@ gem 'gon'
 
 #image uploading
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'mini_magick', '<= 4.2.7'
 gem 'cloudinary'
 
 gem 'twitter-bootstrap-rails'
+
+#for parsing openJUB-data
+gem 'json'
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console

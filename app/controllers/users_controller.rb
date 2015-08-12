@@ -13,20 +13,32 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    puts 'creating new user'
+
+    require 'open-uri'
+    require 'json'
+
+    puts params[:token]
+
+    #fetch email with OpenJUB-API
+    user_info = open("https://api.jacobs-cs.club/user/me"+"?token="+params[:token])
+    json = JSON.parse(user_info.read)
+    email = json["email"]
+
+    @user = User.new(email: email)
     if @user.save
       log_in @user
       flash[:success] = "Welcome to JacobsMKT!"
       redirect_to @user
     else
-      render 'new'
+      flash[:warning] = "Ups! Looks like you are already registered. Try the normal login link."
+      redirect_to login_path #why is this not working? => refers to /user/new
     end
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:email)
     end
 end

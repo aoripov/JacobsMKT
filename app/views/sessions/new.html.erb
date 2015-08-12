@@ -1,24 +1,43 @@
 <% provide(:title, "Log in") %>
+
 <h1 class="text-center">Log in</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+    
+  <% puts "on the new view" %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+  <%= link_to "Log in", openjub_path, :class => "button", :method => :get, :target => "_blank" %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+  <script>
 
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
-      <% end %>
+  //get the callback from openJUB
+    window.addEventListener("message", receiveMessage, false);
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+    function post(data) {
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+      $.ajax({
+        url: "/login",
+        type: "POST",
+        data: JSON.parse(data),
+        success: function(){console.log("submitted")}
+      });
+
+    }
+
+    function receiveMessage(event) {
+
+      console.log(event);
+      post(event.data);
+      console.log("posted");
+  
+    }
+
+  </script>
+
+  <!-- We need to distinguish between users that login for the first time and everyone else -->
+  <p>New user? <%= link_to "Being here for the first time? Sign up here!", signup_path %></p>
+
+
   </div>
 </div>
