@@ -9,6 +9,7 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
     <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.config.css">
     <!-- Latest compiled and minified CSS -->
  <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -20,13 +21,10 @@
     <style>
     </style>
 </head>
-    <body>
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <body>      
+      <div class="ribbon"><span>endorsed by USG</span></div>
 
-	<div class="ribbon"><span>endorsed by USG</span></div>
-
-
-      <header id="navbar" role="banner" class="navbar container navbar-default">
+      <header id="custom-bootstrap-menu" role="banner" class="navbar navbar-default">
         <div class="container">
           <div class="navbar-header">     
             <a class="name navbar-brand" href="/" title="Home">JacobsMKT</a>
@@ -56,21 +54,16 @@
                     <li><a href="#">The Other Side</a></li>
                   </ul>
                 </li>
-              </ul>
+              </ul>                                   
+            </nav>
+            <form class="navbar-form navbar-right">
               <% if logged_in? %>
-              <div>
-                <ul class="nav navbar-nav pull-right">
-                  <li class=""><a href="/logout">Log out</a></li>
-                </ul>
-              </div>
+                <a class="btn btn-success" href="/logout">Log out</a>
               <% else %>
-              <div>
-                <ul class="nav navbar-nav pull-right">
-                  <li class=""><a href="/login">Log in / Sign up</a></li>
-                </ul>
-              </div>
-              <% end %>                                      
-                  </nav>
+                <a class="btn btn-success" href="/login">Log in</a>
+              <% end %>   
+            </form>
+            <div style="width:100px"></div>
           </div>
         </div>
       </header>
@@ -119,6 +112,7 @@
 
     <!-- Footer -->
     <%= debug(params) if Rails.env.development? %>
-
+    <div class="footer">
+    </div>
   </body>
 </html>

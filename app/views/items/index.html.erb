@@ -3,7 +3,8 @@
   <div>
     <% @items.each do |item| %>
     <div class="col-xs-12 col-sm-6 col-md-3 entry-card-wrapper ng-scope">
-      <div class="thumbnail">
+      <div class="item">
+      <a href="/items/<%= item.id %>">
         <div class="thumbnail" style="height:250px;">
           <% unless item.image_url(:thumb).nil? %>
             <% image_url = item.image_url(:thumb)%>
@@ -12,23 +13,24 @@
           <% end %> 
           <%= image_tag image_url, :style => "max-height: 250px; position: relative; top: 50%; transform: translateY(-50%);"%>
         </div>
-        <div class="caption">
+      </a>
+        <div>
           <%
-            if item.name.length > 90
-              item_name = item.name[0..90] + "..."
+            if item.name.length > 15
+              item_name = item.name[0..14].upcase + "..."
             else
-              item_name = item.name
+              item_name = item.name.upcase
             end
           %>
-          <div style="height:80px"><h4><%= item_name %></h4></div>
-          <p><strong>Price: <%= item.price %> &#8364</strong></p>
+          <div style="height:30px"><h5><%= item_name %></h5></div>
           <p>
-            <a href="/items/<%= item.id %>" class="btn btn-primary btn-sm" role="button">See more</a>
+            <a href="/items/<%= item.id %>" class="btn btn-primary btn-xs" role="button">See more</a>
             <% if current_user %>
               <% if item.user_id === current_user.id %>  
-            <a href="/items/<%= item.id %>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>
+            <a href="/items/<%= item.id %>/edit" class="btn btn-primary btn-xs" role="button">Edit</a>
               <% end %>
             <% end %>
+            <span class="label label-primary">&#8364 <%= item.price %></span>
           </p>
          </div>
       </div>

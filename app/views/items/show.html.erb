@@ -14,7 +14,7 @@
           <p>
             <% if current_user %>
               <% if @item.user_id === current_user.id %>  
-            <a href="/items/<%= @item.id %>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>
+            <a href="/items/<%= @item.id %>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>s
               <% end %>
             <% end %>
             <%=link_to "Checkout", new_transaction_path, class: "btn btn-primary btn-sm"%>
