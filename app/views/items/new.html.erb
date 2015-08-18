@@ -4,11 +4,11 @@
   	<%= form_for(@item) do |f| %>  
     	<div class="field"> 
       <label>Name</label> 
-      <%= f.text_area :name , class: "form-control"%>
+      <%= f.text_field :name , class: "form-control"%>
       <label>Price</label>
       <div class="input-group">
       	<div class="input-group-addon">&#8364</div>
-      	<%= f.number_field :price, :class => 'form-control', :step => 'any'%>
+      	<%= f.number_field :price, :class => 'form-control', :step => 'any', value: "0.0"%>
      	</div>
       <label>Description</label>
       <%= f.text_area :description, class: "form-control" %>
