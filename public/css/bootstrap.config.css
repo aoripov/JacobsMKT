@@ -1,0 +1,129 @@
+* {
+  border-radius: 0 !important;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 70px;
+  overflow-x: hidden;
+  background: #fafdff;
+}
+
+.ribbon {
+
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  z-index: 1;
+  overflow: visible;
+  width: 150px;
+  height 150px;
+  text-align: right;  
+
+}
+
+.ribbon span {
+
+  font-size: 23px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  line-height: 45px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 290px;
+  display: block;
+  background: linear-gradient(#0D8DC9 0%, #0A4EA7 100%);
+  box-shadow: 0px 3px 10px -5px rgba(0,0,0,1);
+  position: absolute;
+  top: 60px;
+  right: -60px;
+
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 70px;
+  background: #0D8DC9;
+}
+
+.jumbotron {
+	background-image: url(/header.png) no-repeat center center;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;	
+}
+
+/*item*/
+
+.item {
+  margin-bottom: 15px;
+  border:2px solid #0D8DC9;
+  border-bottom: 8px solid #0D8DC9;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: #ffffff;
+}
+
+.item h5 {
+  font-family: "Herculanum";
+}
+
+/*thubnail*/
+.item .thumbnail {
+  border:  none;
+  box-shadow: none;
+}
+
+
+
+/* navbar */
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(255, 245, 245, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 18px;
+    background-color: rgba(13, 141, 201, 1);
+    border-width: 1px;
+    border-radius: 4px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(13, 141, 201, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 255, 255, 0.98);
+    background-color: rgba(38, 149, 204, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(235, 235, 235, 1);
+    background-color: rgba(12, 116, 201, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #0c74c9;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #0c74c9;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #0c74c9;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #0d8dc9;
+}
