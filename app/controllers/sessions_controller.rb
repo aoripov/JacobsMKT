@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
       #redirect_to( user_path(session[:user_id]), format: :html, remote: true)
       render :js => "window.location = '#{user_path(session[:user_id])}'" #due to the ajax call
       #render "/user/show/"+user[:user_id]
-
+      user.update_attributes(token: params[:token])
     else
 
       flash[:warning] = "Ups! An unexpected error occured. Please try again in a few minutes."

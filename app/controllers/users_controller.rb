@@ -24,8 +24,11 @@ class UsersController < ApplicationController
     user_info = open("https://api.jacobs-cs.club/user/me"+"?token="+params[:token])
     json = JSON.parse(user_info.read)
     email = json["email"]
+    username = json["username"]
+    name = json["fullName"]
+    token = params[:token]
 
-    @user = User.new(email: email)
+    @user = User.new(name: name, username: username, email: email, token: token)
     if @user.save
       log_in @user
       flash[:success] = "Welcome to JacobsMKT!"
