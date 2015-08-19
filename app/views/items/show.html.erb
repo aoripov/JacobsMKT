@@ -1,27 +1,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <div class="container">
   <div>
-    <div class="col-xs-9 col-md-9">
-      <div class="thumbnail">
-      	<!-- <img src="/random.jpeg">   -->
-        <% unless @item.image_url.nil? %>
-          <%= image_tag @item.image_url(:thumb), :class => "img-thumbnail"%>
-        <% end %> 
-        <div class="caption">
-          <h4><%= @item.name %></h4>
-          <p><strong>Price: <%= @item.price %> &#8364</strong></p>
-          <p><%= @item.description %></p>
-          <p>
-            <% if current_user %>
-              <% if @item.user_id === current_user.id %>  
-            <a href="/items/<%= @item.id %>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>s
+    <div class="col-xs-12 col-md-12">
+      <div class="col-xs-12 col-md-9">
+        <div class="thumbnail">
+        	<!-- <img src="/random.jpeg">   -->
+          <% unless @item.image_url.nil? %>
+            <%= image_tag @item.image_url(:thumb), :class => "img-thumbnail"%>
+          <% end %> 
+          <div class="caption">
+            <h4><%= @item.name %></h4>
+            <p><strong>Price: <%= @item.price %> &#8364</strong></p>
+            <p><%= @item.description %></p>
+            <p>
+              <% if current_user %>
+                <% if @item.user_id === current_user.id %>  
+              <a href="/items/<%= @item.id %>/edit" class="btn btn-primary btn-sm" role="button">Edit</a>
+                <% end %>
               <% end %>
-            <% end %>
-            <%=link_to "Checkout", new_transaction_path, class: "btn btn-primary btn-sm"%>
-          </p>
-          <% $price = @item.price %>
-         </div>
+            </p>
+           </div>
+        </div>
       </div>
+     
+      <% if logged_in? %>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail seller-info">
+          <!-- <img src="/random.jpeg">   -->
+          <center><h4><strong>Seller's information</strong></h4></center>
+          <%= image_tag @seller_info["picture"], :class => "img-thumbnail"%>
+          <div class="caption">
+            <h5><%=  @seller_info["fullName"] %></h5>
+            <br/>
+            <div class="row"> 
+              <div class="col-xs-6 college-field college-color-<%= @seller_info["college"] %>"> 
+                <p> College<br>
+                  <strong><%=  @seller_info["college"] %></strong> 
+                </p> 
+              </div> 
+              <div class="col-xs-6 room-field"> 
+                <p> Room<br>
+                  <strong><%=  @seller_info["room"] %></strong> 
+                </p> 
+              </div> 
+            </div>
+          </div>
+          <div class="row"> 
+              <div class="col-xs-2"> 
+                  <p><strong>Email:</strong></p> 
+              </div> 
+              <div class="col-xs-10"> 
+                  <p><%= mail_to @seller_info["email"], @seller_info["email"] , subject: "[JacobsMkt]"+" Buy " + @item.name %></p> 
+              </div> 
+          </div>
+          <%if @seller_info["phone"] %>
+          <div class="row"> 
+              <div class="col-xs-2"> 
+                  <p><strong>Phone:</strong></p> 
+              </div> 
+              <div class="col-xs-10"> 
+                  <p>+49 421 200 <%=  @seller_info["phone"] %></p> 
+              </div> 
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
     </div>
   </div>
 </div>

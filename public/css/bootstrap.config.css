@@ -106,7 +106,66 @@ body {
   box-shadow: none;
 }
 
+/*seller info*/
+.seller-info {
+  /*padding-right:0px; 
+  padding-right:0px;*/
+}
 
+.seller-info .college-field {
+  border-right:1px solid #efefef;
+  border-bottom:1px solid #efefef; 
+  border-top:1px solid #efefef;
+  margin: auto;
+}
+
+.seller-info .room-field {
+  border-left:1px solid #efefef;
+  border-bottom:1px solid #efefef; 
+  border-top:1px solid #efefef;
+  margin: auto;
+}
+
+.seller-info h5 {
+  text-align: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-family: "Andale Mono, monospace";
+  font-size: 16px;
+}
+
+.seller-info p {
+  text-align: center;
+}
+
+.college-field p {
+  margin: auto;
+}
+
+.room-field p {
+  margin: auto;
+}
+
+/*college color*/
+.college-color-None {
+  color:#05457b;background:#b3c1d6
+}
+
+.college-color-C3 {
+  color:#fff;background:#056a00
+} 
+
+.college-color-Krupp {
+  color:#fff;background:#E31502
+}
+
+.college-color-Mercator {
+  color:#fff;background:#00009B
+} 
+
+.college-color-Nordmetall {
+  color:#510a6c;background:#EDEB34
+}
 
 /* navbar */
 
@@ -148,3 +207,5 @@ body {
 #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #0d8dc9;
 }
+
+

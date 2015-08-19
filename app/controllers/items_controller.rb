@@ -28,7 +28,15 @@ class ItemsController < ApplicationController
 
 	# item with current id
 	def show
+		require 'open-uri'
+    	require 'json'
+
 		@item = Item.find(params[:id])
+		if logged_in?
+			seller = User.find(@item.user_id)
+			data = open("https://api.jacobs-cs.club/user/name/" + (seller.username) + "?token=" + (current_user.token))
+	    	@seller_info = JSON.parse(data.read)
+	    end
 	end
 
 	# form for editing item
