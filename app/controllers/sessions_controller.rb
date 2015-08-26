@@ -20,19 +20,24 @@ class SessionsController < ApplicationController
     user = User.find_by(email: email)
     
     if user
-      puts 'user found'
       log_in(user, params[:token])
-      #params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      #redirect_to( user_path(session[:user_id]), format: :html, remote: true)
       render :js => "window.location = '#{user_path(session[:user_id])}'" #due to the ajax call
-      #render "/user/show/"+user[:user_id]
       user.update_attributes(token: params[:token])
     else
+      username = json["username"]
+      name = json["fullName"]
+      token = params[:token]
 
-      flash[:warning] = "Ups! An unexpected error occured. Please try again in a few minutes."
-
+      user = User.new(name: name, username: username, email: email, token: token)
+      if user.save
+        log_in(user, token)
+        flash[:success] = "Welcome to JacobsMKT!"
+        render :js => "window.location = '#{user_path(session[:user_id])}'" #due to the ajax call
+      else
+        flash[:warning] = "Ups! An unexpected error occured. Please try again in a few minutes."
+        redirect_to root_url
+      end
     end
-
   end
 
 

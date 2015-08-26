@@ -13,12 +13,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts 'creating new user'
+    #moved to sessions
 
     require 'open-uri'
     require 'json'
-
-    puts params[:token]
 
     #fetch email with OpenJUB-API
     user_info = open("https://api.jacobs-cs.club/user/me"+"?token="+params[:token])
@@ -30,7 +28,7 @@ class UsersController < ApplicationController
 
     @user = User.new(name: name, username: username, email: email, token: token)
     if @user.save
-      log_in @user
+      log_in(@user.id, token)
       flash[:success] = "Welcome to JacobsMKT!"
       render :js => "window.location = '#{@user}'" #due to the ajax call
     else

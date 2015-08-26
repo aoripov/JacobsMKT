@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   root :to => 'items#index'
-  get 'transactions/new'
-  get    'signup'  => 'users#new'
-  get    'login'   => 'sessions#new'
-  get   'openjub'  => redirect("https://api.jacobs-cs.club/view/login")
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
-  get '/logout' => 'sessions#logout'
+  get 'openjub'  => redirect("https://api.jacobs-cs.club/view/login")
+  # for users
+  post '/login'   => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
   get '/users/:id', to: 'users#show', as:'user'
+  
+  # for items
   get '/items' => 'items#index'
   get '/items/new' => 'items#new'
   post '/items' => 'items#create'
