@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
       name = json["fullName"]
       token = params[:token]
 
-      user = User.new(name: name, username: username, email: email, token: token)
+      user = User.new(name: name, username: username, email: email, token: token, role: 3)
       if user.save
         log_in(user, token)
         flash[:success] = "Welcome to JacobsMKT!"

@@ -37,6 +37,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def admin
+    if admin?
+      @users = User.all#.where.not(username: current_user.username)
+    else
+      redirect_to '/422.html'
+    end
+  end
+
   private
 
     def user_params

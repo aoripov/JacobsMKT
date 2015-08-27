@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   post '/login'   => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/users/:id', to: 'users#show', as:'user'
+  # admin
+  get '/admin' => 'users#admin' #table of users
   
   # for items
   get '/items' => 'items#index'
   get '/items/new' => 'items#new'
   post '/items' => 'items#create'
-  get '/user/items' => 'items#user_items'
+  get '/items/user/:id' => 'items#user_items'
   get '/items/:id' => 'items#show'
   get '/items/:id/edit' => 'items#edit', :as => :item
   patch '/items/:id/edit' => 'items#update'
