@@ -1,5 +1,10 @@
 class ItemsController < ApplicationController
 	
+	def eligible_edit_item(item)
+		item.user_id == current_user.id  || admin?
+	end
+
+
 	# show all items
 	def index
 		@items = Item.all
@@ -7,23 +12,32 @@ class ItemsController < ApplicationController
 
 	# form for new item
 	def new
-		@item = Item.new
+		unless logged_in?
+			redirect_to '/422.html'
+		else
+			@item = Item.new
+		end
 	end 
 
 	# saving to database new item
 	def create
-		@item = Item.new(item_params)
-		@item.user_id = current_user.id
-		if @item.save
-			redirect_to '/user/items'
-		else
-			render 'new'
+		unless logged_in?
+			redirect_to '/422.html'
+		else 
+			@item = Item.new(item_params)
+			@item.user_id = current_user.id
+			if @item.save
+				flash[:info] = "Item has been successfully created."
+				redirect_to '/items/user/' + current_user.id.to_s
+			else
+				render 'new'
+			end
 		end
 	end
 
 	# all items that are created by current user
 	def user_items 
-		@items = Item.where(user_id: current_user)
+		@items = Item.where(user_id: params[:id])
 	end
 
 	# item with current id
@@ -43,30 +57,35 @@ class ItemsController < ApplicationController
 	def edit
 		@item = Item.find(params[:id])
 		# check access
-		if (@item.user_id != current_user.id)
+		if (!eligible_edit_item(@item))
 			redirect_to '/422.html'
 		end
 	end
 
 	def update
 		@item = Item.find(params[:id])
-	    if (@item.user_id != current_user.id)
+	    if (!eligible_edit_item(@item))
 			redirect_to '/422.html'
 		end
 	    if @item.update_attributes(item_params)
+	    	flash[:info] = "Item has been successfully updated."
 	      	redirect_to '/user/items'
 	    else
+	    	flash[:error] = "Error while updating item."
 	      	render 'edit'
 	    end
-	end
+	end 
 
 	def delete
 		@item = Item.find(params[:id])
-		if (@item.user_id != current_user.id)
+		if (!eligible_edit_item(@item))
 			redirect_to '/422.html'
 		end
 		if @item.destroy
+			flash[:info] = "Item has been successfully deleted."
 			redirect_to '/'
+		else
+			flash[:error] = "Error while deleting item."
 		end
 	end
 

@@ -32,7 +32,11 @@ module SessionsHelper
   end
 
   def eligible_for_viewing?(user)
-    current_user.id == user.id
+    current_user.id == user.id || admin?
+  end
+
+  def eligible_for_editing?(user)
+    current_user.id == user.id || admin?
   end
   
   # Forgets a persistent session.
@@ -54,4 +58,22 @@ module SessionsHelper
 
     @current_user = nil
   end
+
+  def admin?
+    current_user.role == 1
+  end
+
+  def roleToString(role)
+    case role
+    when 1
+      'admin'
+    when 2
+      'editor'
+    when 3
+      'user'
+    else
+      'no role'
+    end
+  end
+
 end
