@@ -25,10 +25,12 @@ ActiveRecord::Schema.define(version: 20150827160910) do
     t.string   "image",       limit: 255
     t.text     "description", limit: 65535
     t.float    "price",       limit: 24
+    t.integer  "status",      limit: 4,     default: 1
+    t.integer  "priority",    limit: 4,     default: 0
     t.integer  "user_id",     limit: 4
     t.integer  "category_id", limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
