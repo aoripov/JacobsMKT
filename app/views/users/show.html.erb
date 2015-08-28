@@ -22,7 +22,8 @@
     <a href="/items/user/<%= @user.id %>" class="btn btn-primary btn-sm" role="button">My Items</a>
     <a href="/items/new" class="btn btn-primary btn-sm" role="button">Add Product</a>
     <% if admin? %> <!--admin-->
-    <a href="/admin" class="btn btn-primary btn-sm" role="button">Administration panel</a>
+    <a href="/admin/users" class="btn btn-primary btn-sm" role="button">Users</a>
+    <a href="/admin/category" class="btn btn-primary btn-sm" role="button">Categories</a>
     <% end %>
   </div>
 </html>

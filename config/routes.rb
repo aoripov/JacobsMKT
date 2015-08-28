@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/users/:id', to: 'users#show', as:'user'
   # admin
-  get '/admin' => 'users#admin' #table of users
+  get '/admin/users' => 'users#admin' #table of users
+  get '/admin/category' => 'category#index'
   
   # for items
   get '/items' => 'items#index'
@@ -19,6 +20,14 @@ Rails.application.routes.draw do
   get '/items/:id/delete' => 'items#delete'
   resources :users
   resources :transactions, only: [:new, :create]
+
+  # categories
+  get '/category' => redirect('/admin/category')
+  post '/categories' => 'category#create'
+  get '/category/:id/delete' => 'category#delete'
+  patch '/category' => 'category#update'
+  get '/category/:machine_name' =>'items#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
