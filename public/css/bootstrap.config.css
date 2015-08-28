@@ -56,7 +56,7 @@ body {
   padding-top: 23px;
 }
 
-.footer a:link, a:visited { 
+.footer a:link, .footer a:visited { 
     color: rgba(255, 255, 255, 1);
     cursor: auto;
     font-weight: 600;
@@ -64,7 +64,7 @@ body {
     font-size: 16px;
 }
 
-.footer a:link:active, a:visited:active { 
+.footer a:link:active, .footer a:visited:active { 
     color: rgba(255, 255, 255, 1);
     font-weight: 600;
     font-family: "Andale Mono, monospace";
@@ -104,6 +104,17 @@ body {
 .item .thumbnail {
   border:  none;
   box-shadow: none;
+}
+
+.item-add {
+  height:350px; 
+  text-align: center;
+  vertical-align: center; 
+  padding-top: 150px;  
+}
+
+.thumbnail-container {
+  padding: 20px;
 }
 
 /*seller info*/
