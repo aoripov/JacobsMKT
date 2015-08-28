@@ -7,7 +7,16 @@ class ItemsController < ApplicationController
 
 	# show all items
 	def index
-		@items = Item.all
+		if params[:machine_name].nil?
+			@items = Item.all
+		else
+			@category = Category.find_by(machine_name: params[:machine_name])
+			if @category.nil?
+				redirect_to '/422.html'
+			else
+				@items = Item.where(category_id: @category.id)
+			end
+		end
 	end
 
 	# form for new item
@@ -16,6 +25,7 @@ class ItemsController < ApplicationController
 			redirect_to '/422.html'
 		else
 			@item = Item.new
+			@categories = Category.all
 		end
 	end 
 
@@ -26,6 +36,7 @@ class ItemsController < ApplicationController
 		else 
 			@item = Item.new(item_params)
 			@item.user_id = current_user.id
+			#@item.category_id = params[:id]
 			if @item.save
 				flash[:info] = "Item has been successfully created."
 				redirect_to '/items/user/' + current_user.id.to_s
@@ -69,7 +80,7 @@ class ItemsController < ApplicationController
 		end
 	    if @item.update_attributes(item_params)
 	    	flash[:info] = "Item has been successfully updated."
-	      	redirect_to '/user/items'
+	      	redirect_to '/items/user/' + current_user.id.to_s
 	    else
 	    	flash[:error] = "Error while updating item."
 	      	render 'edit'
@@ -91,6 +102,6 @@ class ItemsController < ApplicationController
 
 	private
 		def item_params
-			params.require(:item).permit(:name, :price, :description, :id, :image)
+			params.require(:item).permit(:name, :price, :description, :id, :image, :category_id)
 		end
 end

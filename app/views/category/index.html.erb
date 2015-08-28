@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-xs-12 col-md-12">
+  	<div class="thumbnail">
+      <h1 class="text-center">Categories</h1>
+      <table class="table table-bordered">  
+          <thead>  
+            <tr>  
+              <th>Name</th>  
+              <th>Machine name</th>
+              <th>Action</th> 
+            </tr>  
+          </thead>  
+          <tbody> 
+            <% @categories.each do |category| %>
+              <%= form_for(category) do |f| %> 
+              <tr>  
+                <td><%= f.text_field :name , class: "form-control"%></td>  
+                <td><%= f.text_field :machine_name , class: "form-control"%></td>  
+                <td>
+                  <%= f.submit "Update", :class => 'btn btn-primary btn-sm' %>
+                  <a href="/category/<%= category.id %>/delete" class="btn btn-danger btn-sm" role="button">Delete</a>
+                </td>
+              </tr>
+              <% end %>  
+            <% end %>
+              <%= form_for(@category) do |f| %> 
+              <tr>  
+                <td><%= f.text_field :name , class: "form-control"%></td>  
+                <td><%= f.text_field :machine_name , class: "form-control"%></td>  
+                <td><%= f.submit "Create", :class => 'btn btn-primary btn-sm' %></td>
+              </tr>
+              <% end %>  
+          </tbody>  
+      </table>
+  	</div>
+  </div>
+</div>
