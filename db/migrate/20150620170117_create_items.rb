@@ -5,6 +5,8 @@ class CreateItems < ActiveRecord::Migration
       t.string :image
       t.text :description
       t.float :price
+      t.integer :status, default: 1
+      t.integer :priority, default: 0
       t.belongs_to :user, index: true
       t.belongs_to :category, index: true
       t.timestamps null: false
