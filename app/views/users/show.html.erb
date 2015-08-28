@@ -1,29 +1,33 @@
-<!DOCTYPE html>
-  <h1 class="text-center">User information</h1>
-  <div id="datatable" class="container">
-    <table class="table table-bordered">  
-        <thead>  
-          <tr>  
-            <th>Option</th>  
-            <th>Value</th>  
-          </tr>  
-        </thead>  
-        <tbody>  
-          <tr>  
-            <td>Name</td>  
-            <td><%= @user.name %></td>  
-          </tr>  
-          <tr>  
-            <td>Email</td>  
-            <td><%= @user.email %></td>  
-          </tr>  
-        </tbody>  
-    </table>
-    <a href="/items/user/<%= @user.id %>" class="btn btn-primary btn-sm" role="button">My Items</a>
-    <a href="/items/new" class="btn btn-primary btn-sm" role="button">Add Product</a>
-    <% if admin? %> <!--admin-->
-    <a href="/admin/users" class="btn btn-primary btn-sm" role="button">Users</a>
-    <a href="/admin/category" class="btn btn-primary btn-sm" role="button">Categories</a>
-    <% end %>
+<div class="container">
+  <div class="col-xs-12 col-md-12">
+    <div class="thumbnail thumbnail-container">
+      <h1 class="text-center">User information</h1>
+      <div id="datatable" class="container">
+        <table class="table table-bordered">  
+            <thead>  
+              <tr>  
+                <th>Option</th>  
+                <th>Value</th>  
+              </tr>  
+            </thead>  
+            <tbody>  
+              <tr>  
+                <td>Name</td>  
+                <td><%= @user.name %></td>  
+              </tr>  
+              <tr>  
+                <td>Email</td>  
+                <td><%= @user.email %></td>  
+              </tr>  
+            </tbody>  
+        </table>
+        <a href="/items/user/<%= @user.id %>" class="btn btn-primary btn-sm" role="button">My Items</a>
+        <a href="/items/new" class="btn btn-primary btn-sm" role="button">Add Product</a>
+        <% if admin? %> <!--admin-->
+        <a href="/admin/users" class="btn btn-primary btn-sm" role="button">Users</a>
+        <a href="/admin/category" class="btn btn-primary btn-sm" role="button">Categories</a>
+        <% end %>
+      </div>
+    </div>
   </div>
-</html>
+</div>
