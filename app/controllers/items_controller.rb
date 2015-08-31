@@ -35,13 +35,17 @@ class ItemsController < ApplicationController
 			redirect_to '/422.html'
 		else 
 			@item = Item.new(item_params)
+			puts "hello create"
 			@item.user_id = current_user.id
 			#@item.category_id = params[:id]
-			if @item.save
+			if @item.save!
+				puts "success"
 				flash[:info] = "Item has been successfully created."
 				redirect_to '/items/user/' + current_user.id.to_s
 			else
+				puts "fail"
 				render 'new'
+
 			end
 		end
 	end
