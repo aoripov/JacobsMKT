@@ -47,7 +47,6 @@ gem 'gon'
 #image uploading
 gem 'carrierwave'
 gem 'mini_magick', '<= 4.2.7'
-gem 'cloudinary'
 
 gem 'twitter-bootstrap-rails'
 
