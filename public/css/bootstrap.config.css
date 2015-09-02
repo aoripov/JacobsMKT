@@ -52,7 +52,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 100px;
-  background: #5D8DC9;
+  background: #002158;
   padding-top: 23px;
 }
 
@@ -192,31 +192,31 @@ body {
 }
 #custom-bootstrap-menu.navbar-default {
     font-size: 18px;
-    background-color: rgba(13, 141, 201, 1);
+    background-color: #002158;
     border-width: 1px;
     border-radius: 4px;
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
     color: rgba(255, 255, 255, 1);
-    background-color: rgba(13, 141, 201, 1);
+    background-color: #002158;
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
     color: rgba(255, 255, 255, 0.98);
-    background-color: rgba(38, 149, 204, 1);
+    background-color: #002158;
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(235, 235, 235, 1);
-    background-color: rgba(12, 116, 201, 1);
+    background-color: #002158;
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle {
     border-color: #0c74c9;
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
 #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
-    background-color: #0c74c9;
+    background-color: #002158;
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
     background-color: #0c74c9;
