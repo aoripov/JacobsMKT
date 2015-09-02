@@ -178,6 +178,13 @@ body {
   color:#510a6c;background:#EDEB34
 }
 
+
+.cat-tab {
+  border:1px solid #efefef;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 /* navbar */
 
 #custom-bootstrap-menu.navbar-default .navbar-brand {
