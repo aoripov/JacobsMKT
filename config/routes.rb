@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'impressum/about'
+
+  get 'impressum/support'
+
   root :to => 'items#index'
   get 'openjub'  => redirect("https://api.jacobs-cs.club/view/login")
   # for users
@@ -27,6 +31,7 @@ Rails.application.routes.draw do
   get '/category/:id/delete' => 'category#delete'
   patch '/category' => 'category#update'
   get '/category/:machine_name' =>'items#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
