@@ -2,36 +2,46 @@
   <div class="col-xs-12 col-md-12">
   	<div class="thumbnail thumbnail-container">
       <h1 class="text-center">Categories</h1>
-      <table class="table table-bordered">  
-          <thead>  
-            <tr>  
-              <th>Name</th>  
-              <th>Machine name</th>
-              <th>Action</th> 
-            </tr>  
-          </thead>  
-          <tbody> 
-            <% @categories.each do |category| %>
-              <%= form_for(category) do |f| %> 
-              <tr>  
-                <td><%= f.text_field :name , class: "form-control"%></td>  
-                <td><%= f.text_field :machine_name , class: "form-control"%></td>  
-                <td>
-                  <%= f.submit "Update", :class => 'btn btn-primary btn-sm' %>
-                  <a href="/category/<%= category.id %>/delete" class="btn btn-danger btn-sm" role="button">Delete</a>
-                </td>
-              </tr>
-              <% end %>  
-            <% end %>
-              <%= form_for(@category) do |f| %> 
-              <tr>  
-                <td><%= f.text_field :name , class: "form-control"%></td>  
-                <td><%= f.text_field :machine_name , class: "form-control"%></td>  
-                <td><%= f.submit "Create", :class => 'btn btn-primary btn-sm' %></td>
-              </tr>
-              <% end %>  
-          </tbody>  
-      </table>
+      <div class="row cat-tab">
+        <div class="col-lg-5">
+          <strong>Name</strong>
+        </div>
+        <div class="col-lg-5">
+          <strong>Machine name</strong>
+        </div>
+        <div class="col-lg-2">
+          <strong>Action</strong>
+        </div>
+      </div>
+      <% @categories.each do |category| %>
+      <div class="row cat-tab">
+      <%= form_for(category) do |f| %> 
+        <div class="col-lg-5">
+          <%= f.text_field :name , class: "form-control"%>
+        </div>
+        <div class="col-lg-5">
+          <%= f.text_field :machine_name , class: "form-control"%>
+        </div>
+        <div class="col-lg-2">
+          <%= f.submit "Update", :class => 'btn btn-primary btn-sm'%>
+          <a href="/category/<%= category.id %>/delete" class="btn btn-danger btn-sm" role="button">Delete</a>
+        </div>
+      <% end %>
+      </div>
+      <% end %>
+      <div class="row cat-tab">
+      <%= form_for(@category) do |f| %> 
+        <div class="col-lg-5">
+          <%= f.text_field :name , class: "form-control"%>
+        </div>
+        <div class="col-lg-5">
+          <%= f.text_field :machine_name , class: "form-control"%>
+        </div>
+        <div class="col-lg-2">
+          <%= f.submit "Create", :class => 'btn btn-primary btn-sm'%>
+        </div>
+      <% end %>
+      </div>
   	</div>
   </div>
 </div>
