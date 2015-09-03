@@ -189,6 +189,8 @@ body {
 
 #custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(255, 245, 245, 1);
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
 }
 #custom-bootstrap-menu.navbar-default {
     font-size: 18px;
