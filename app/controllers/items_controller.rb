@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
 				@items = Item.where(category_id: @category.id)
 			end
 		end
+		@items = @items.order("created_at DESC").paginate(:page => params[:page], :per_page => 32)
 	end
 
 	# form for new item

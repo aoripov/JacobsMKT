@@ -75,3 +75,4 @@ group :production do
   gem 'pg'
 end
 
+gem 'will_paginate', '~> 3.0.6' #pagination
