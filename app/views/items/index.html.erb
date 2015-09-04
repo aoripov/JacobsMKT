@@ -32,10 +32,16 @@
               <% end %>
             <% end %>
             <span class="label label-primary">&#8364 <%= item.price %></span>
+            <% if item.created_at.to_date == Date.current %>
+              <span class="label label-danger">NEW</span>
+            <% end %>
           </p>
          </div>
       </div>
     </div>
     <% end %>
   </div>
+</div>
+<div>
+  <center><%= will_paginate @items %></center>
 </div>
