@@ -27,7 +27,7 @@
           <p>
             <a href="/items/<%= item.id %>" class="btn btn-primary btn-xs" role="button">See more</a>
             <% if current_user %>
-              <% if item.user_id === current_user.id %>  
+              <% if item.user_id === current_user.id  || admin?%>  
             <a href="/items/<%= item.id %>/edit" class="btn btn-primary btn-xs" role="button">Edit</a>
               <% end %>
             <% end %>

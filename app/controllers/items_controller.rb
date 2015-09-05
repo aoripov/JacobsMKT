@@ -36,9 +36,7 @@ class ItemsController < ApplicationController
 			redirect_to '/422.html'
 		else 
 			@item = Item.new(item_params)
-			puts "hello create"
 			@item.user_id = current_user.id
-			#@item.category_id = params[:id]
 			if @item.save!
 				puts "success"
 				flash[:info] = "Item has been successfully created."
@@ -46,7 +44,32 @@ class ItemsController < ApplicationController
 			else
 				puts "fail"
 				render 'new'
+			end
+		end
+	end
 
+	def new_admin
+		unless admin?
+			redirect_to '/422.html'
+		else
+			@item = Item.new
+			@categories = Category.all
+		end
+	end 
+
+	# saving to database new item
+	def create_admin
+		unless admin?
+			redirect_to '/422.html'
+		else 
+			@item = Item.new(item_params_admin)
+			@item.user_id = params[:user_id]
+			if @item.save!
+				puts "success"
+				flash[:info] = "Item has been successfully created."
+				redirect_to '/items/user/' + params[:user_id].to_s
+			else
+				render 'new_admin'
 			end
 		end
 	end
@@ -108,5 +131,9 @@ class ItemsController < ApplicationController
 	private
 		def item_params
 			params.require(:item).permit(:name, :price, :description, :id, :image, :category_id)
+		end
+
+		def item_params_admin
+			params.require(:item).permit(:name, :price, :description, :image, :category_id)
 		end
 end
