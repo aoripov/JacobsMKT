@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # admin
   get '/admin/users' => 'users#admin' #table of users
   get '/admin/category' => 'category#index'
+  get '/admin/:user_id/items/new' => 'items#new_admin'
+  post '/admin/:user_id/items' => 'items#create_admin'
   
   # for items
   get '/items' => 'items#index'
