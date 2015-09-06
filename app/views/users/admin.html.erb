@@ -19,7 +19,11 @@
               <td><%= user.username %></td>  
               <td><%= user.email %></td>
               <td><%= roleToString(user.role) %></td>
-              <td><%= link_to 'Add item', '/admin/' + user.id.to_s + '/items/new', :class => "btn btn-primary"%></td>  
+              <td>
+                <%= link_to 'Add item', '/admin/' + user.id.to_s + '/items/new', :class => "btn btn-primary"%>
+                <%= link_to 'Make admin', '/admin/make_admin/' + user.id.to_s, :class => "btn btn-primary"%>
+                <%= link_to 'Make user', '/admin/make_user/' + user.id.to_s, :class => "btn btn-primary"%>
+              </td>  
             </tr>  
             <% end %>  
           </tbody>  

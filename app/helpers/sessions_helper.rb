@@ -59,7 +59,11 @@ module SessionsHelper
   end
 
   def admin?
-    current_user.role == 1
+    if current_user.nil?
+      false 
+    else
+      current_user.role == 1
+    end
   end
 
   def roleToString(role)

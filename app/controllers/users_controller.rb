@@ -45,6 +45,35 @@ class UsersController < ApplicationController
     end
   end
 
+  def make_admin
+    unless admin?
+      redirect_to '/422.html'
+    else
+      @user = User.find(params[:user_id])
+      if @user.update_attributes(role: 1)
+          redirect_to '/admin/users'
+      else
+        flash[:error] = "Error while updating user role."
+      end
+
+    end
+  end
+
+  def make_user
+    unless admin?
+      redirect_to '/422.html'
+    else
+      @user = User.find(params[:user_id])
+      if @user.update_attributes(role: 3)
+          redirect_to '/admin/users'
+      else
+        flash[:error] = "Error while updating user role."
+      end
+
+    end
+  end
+
+
   private
 
     def user_params
