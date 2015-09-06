@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
 	# show all items
 	def index
+		@title = nil
 		if params[:machine_name].nil?
 			@items = Item.all
 		else
@@ -15,6 +16,7 @@ class ItemsController < ApplicationController
 				redirect_to '/422.html'
 			else
 				@items = Item.where(category_id: @category.id)
+				@title = @category.name
 			end
 		end
 		@items = @items.order("created_at DESC").paginate(:page => params[:page], :per_page => 32)
