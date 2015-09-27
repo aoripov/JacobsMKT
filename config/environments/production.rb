@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #add encryption
-  config.force_ssl = false
+  config.force_ssl = true
 
 
   # trying to fix bootsrap on heroku
