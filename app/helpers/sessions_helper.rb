@@ -52,7 +52,7 @@ module SessionsHelper
     session.delete(:user_id)
 
     #logout at OpenJUB
-    response = open("https://api.jacobs-cs.club/user/me"+"?token="+session[:jub_token]) #make error check!
+    #TODO: error check
     session.delete(:jub_token)
 
     @current_user = nil
