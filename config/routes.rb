@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'impressum/support'
 
+  get '/fleamarket' => 'impressum#fleamarket'
+
   root :to => 'items#index'
   get 'openjub'  => redirect("https://api.jacobs-cs.club/view/login")
   # for users
