@@ -4,4 +4,7 @@ class ImpressumController < ApplicationController
 
   def support
   end
+
+  def fleamarket
+  end
 end
